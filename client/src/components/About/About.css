@@ -1,0 +1,9 @@
+ul {
+  list-style-type: square;
+  /* list-style-image: url(example.png); */
+  list-style-position: inside;
+}
+
+li i {
+  color: green;
+}

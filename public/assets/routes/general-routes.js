@@ -167,30 +167,4 @@ module.exports = function(app) {
     res.redirect("/api/articles");
   });
 
-  //for chatkit
-app.post('/users', (req, res) => {
-  const { username } = req.body
-  chatkit
-    .createUser({
-      id: username,
-      name: username
-    })
-    .then(() => res.sendStatus(201))
-    .catch(error => {
-      if (error.error === 'services/chatkit/user_already_exists') {
-        res.sendStatus(200)
-      } else {
-        res.status(error.status).json(error)
-      }
-    })
-});
-
-app.post('/authenticate', (req, res) => {
-  // const { grant_type} = req.body
-  // res.json(chatkit.authenticate({grant_type}, req.query.user_id))
-  const authData = chatkit.authenticate({ userId: req.query.user_id })
-  res.status(authData.status).send(authData.body)
-})
-
-
 };

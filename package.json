@@ -9,20 +9,21 @@
         "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
     },
     "dependencies": {
-        "@pusher/chatkit": "^0.7.17",
-        "@pusher/chatkit-server": "^0.12.2",
-        "balanced-match": "^1.0.0",
+        "@pusher/chatkit": "^0.7.18",
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "cheerio": "^1.0.0-rc.2",
         "cors": "^2.8.4",
         "dotenv": "^6.0.0",
         "express": "^4.16.3",
         "express-session": "^1.15.6",
+        "jsonwebtoken": "^8.3.0",
         "mongoose": "^5.3.1",
+        "passport": "^0.4.0",
         "path": "^0.12.7",
         "pusher-chatkit-server": "^0.12.0",
-        "react-dom": "^16.5.2",
-        "request": "^2.88.0"
+        "request": "^2.88.0",
+        "validator": "^10.8.0"
     },
     "devDependencies": {
         "concurrently": "^3.5.0"

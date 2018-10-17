@@ -1,0 +1,30 @@
+/* .jumbotron {
+  min-height: 80px;
+  padding-top: 40px;
+}
+*/
+h3.display-5 {
+  margin-top: 50px;
+}
+
+#page-header {
+  /* height: 200px; */
+
+  /* background: url('./img/dark-sky.jpeg'); */
+  /* background-position: -200px -5000px;  */
+
+  /* background: url('./img/only-stars.jpeg'); */
+  top: 50;
+  /* background-attachment: fixed; */
+  color: white; 
+} 
+
+/* 
+.jumbotron {
+  background-color: #0B3C5D;
+  color: white;
+} 
+  color: #fff; 
+  border-bottom: 1px #eee solid;
+*/
+

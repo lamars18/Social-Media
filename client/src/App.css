@@ -2,9 +2,10 @@
   text-align: center;
 }
 
+/* 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 20vmin;
 }
 
 .App-header {
@@ -29,4 +30,125 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+html,body {
+  color: #2F2F28;     /* match app-bg-color-4 */
+}
+
+.app-display-4 {
+  font-size: 2.0rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/*******************/
+/* App Color Theme */
+/*******************/
+/* https://www.canva.com/learn/100-color-combinations/ */
+/* 79. Beyond Black & White (turquoise #31A2AC, lipstick #AF1C1C, grayish while #F0EFF0, old wood #2F2F28) */
+.app-color-1,
+a.app-color-1:hover {
+  color:#31A2AC;
+}
+.app-bg-color-1 {
+  background-color:#31A2AC;
+}
+.app-border-color-1 {
+  border: 1px solid;
+  border-color:#31A2AC;
+}
+
+.app-color-2,
+a.app-color-2:hover {
+  color: #AF1C1C;
+}
+.app-bg-color-2 {
+  background-color: #AF1C1C;
+}
+.app-border-color-2 {
+  border: 1px solid;
+  border-color:#AF1C1C;
+}
+
+.app-color-3,
+a.app-color-3:hover {
+  color: #F0EFF0;
+}
+.app-bg-color-3 {
+  background-color: #F0EFF0;
+}
+.app-border-color-3 {
+  border: 1px solid;
+  border-color:#F0EFF0;
+}
+
+.app-color-4,
+a.app-color-4:hover {
+  color: #2F2F28;
+}
+.app-bg-color-4 {
+  background-color: #2F2F28;
+}
+.app-border-color-4 {
+  border: 1px solid;
+  border-color:#2F2F28;
+}
+
+.app-color-5,
+a.app-color-5:hover {
+  color: #0DAB76;   /* #6B9080 or #397367 or #0DAB76*/
+}
+.app-bg-color-5 {
+  background-color: #0DAB76;
+}
+.app-border-color-5 {
+  border: 1px solid;
+  border-color:#0DAB76;
+}
+
+.app-color-6,
+a.app-color-6:hover {
+  color: #4392F1;   /* #4392F1 or ? */
+}
+.app-bg-color-6 {
+  background-color: #4392F1;
+}
+.app-border-color-6 {
+  border: 1px solid;
+  border-color:#4392F1;
+}
+
+a:hover {
+  filter: brightness(80%);
+}
+
+button, a {
+  filter: opacity(.8);
+}
+/* none of the below had any impact on alignment for the a icon to line up, used mt-3 instead
+/* a > i,button > i {
+  align-items:center;
+  justify-content:center;
+  text-align: center;
+  vertical-align: middle;
+} */
+
+button:hover,
+a:hover {
+  filter: opacity(1.0);
+}
+button:focus,
+a:focus {
+  outline: none;
+}
+
+.app-btn-primary {
+  color: #fff;
+  background-color: #31A2AC;
+  border-color: 31A2AC;
+}
+
+p {
+  font-size: 14px;
 }

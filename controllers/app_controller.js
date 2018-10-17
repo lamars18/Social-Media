@@ -6,5 +6,6 @@ var router = express.Router();
 // =============================================================
 require("../public/assets/routes/general-routes.js")(router);
 require("../public/assets/routes/article-api-routes.js")(router);
+require("../public/assets/routes/user-routes.js")(router);
 
 module.exports = router;

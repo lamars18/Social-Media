@@ -3,82 +3,90 @@
 ///////////////////
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import setAuthToken from './actions/setAuthToken';
+import { setCurrentUser, logoutUser } from './actions/authentication';
+import jwt_decode from 'jwt-decode';
+import store from './actions/store';
+
 //components
-import Navigation from './components/Navigation';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Navigation from './components/layout/Navigation';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
+
 // pages
-import Home from './components/Home';
-import NewsFeed from './components/NewsFeed';
-import NotFound from './components/NotFound';
-import About from './components/About';
-// Context UI
-import { Provider } from './context';
+import About from './components/pages/About';
+import Home from './components/pages/Home';
+import Content from './components/pages/Content';
+import NotFound from './components/pages/NotFound';
+
+// Manage App State
+import { Provider } from 'react-redux';
+
 // stylesheets
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-//For chat
-// import UsernameForm from './components/Chat/UsernameForm'
-// import ChatScreen from './components/Chat/ChatScreen'
+//chat
+import ChatScreen from './components/pages/Chat/ChatScreen'; 
 
-class App extends Component {
-  
-   //////////////////////////////////////////////
-  // handle communicating with express server
-  //////////////////////////////////////////////
-  state = {
-    // articles: ''
-    appName: "SpaceBar",
-    orgName: "GT Project Team",
-    year: new Date().getFullYear()
-  };
 
-  async componentDidMount() {
-      // let res = await axios.get('/api/scrape');
-  
-      // console.log(res.data);
-      // this.setState({ articles: res.data });
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    store.dispatch(logoutUser());
+    window.location.href = '/login'
   }
+}
+
+
+//////////////////////////////////////////////
+// App component
+//////////////////////////////////////////////
+class App extends Component {
   constructor() {
     super()
     this.state = {
       currentUsername: '',
       currentScreen: 'WhatIsYourUsernameScreen',
-    }
-    this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
+  // state = {
+    appName: "SpaceBar",
+    orgName: "GT Project Team",
+    year: new Date().getFullYear()
   }
-
-  onUsernameSubmitted(username) {
-    fetch('http://localhost:3001/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username }),
-    })
-      .then(response => {
-        this.setState({
-          currentUsername: username,
-          currentScreen: 'ChatScreen',
-        })
+  this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
+}
+onUsernameSubmitted(username) {
+  fetch('http://localhost:3001/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username }),
+  })
+    .then(response => {
+      this.setState({
+        currentUsername: username,
+        currentScreen: 'ChatScreen',
       })
-      .catch(error => console.error('error', error))
+    })
+    .catch(error => console.error('error', error))
   }
   
-
-
   /////////////////////////
-  // app render
+  // render
   /////////////////////////
   render() {
-    // if (this.state.currentScreen === 'WhatIsYourUsernameScreen') {
-    //   return <UsernameForm onSubmit={this.onUsernameSubmitted} />
-    // }
-    // if (this.state.currentScreen === 'ChatScreen') {
-    //   return <ChatScreen currentUsername={this.state.currentUsername} />
-    // }
+    if (this.state.currentScreen === 'ChatScreen') {
+      return <ChatScreen onSubmit={this.onUsernameSubmitted} 
+      currentUsername={this.state.currentUsername} />
+    }
     return (
-      <Provider>
+      <Provider store={store}>
         <Router>
           <div className="App fluid-container">
             <Navigation 
@@ -86,14 +94,15 @@ class App extends Component {
             />
             <Header
               title={this.state.appName}
-              titleicon="fas fa-rocket"
               message="Discover what's out there."
             ></Header>
 
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/api/articles' component={NewsFeed} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/register' component={Register} />
               <Route exact path="/about" component={About} />
+              <Route path='/api/articles' component={Content} />
               <Route component={NotFound} />
             </Switch>
 
@@ -110,5 +119,3 @@ class App extends Component {
 }
 
 export default App;
-  
-  

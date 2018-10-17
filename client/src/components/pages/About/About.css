@@ -1,0 +1,9 @@
+#about-page ul {
+  list-style-type: square;
+  /* list-style-image: url(example.png); */
+  list-style-position: inside;
+}
+
+ul#feature-list {
+  list-style-type: none;
+}

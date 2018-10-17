@@ -32,6 +32,11 @@ Steps:
 7. yarn dev
 
 The application launches in our browser.
+
+Important: If you get a react-scripts type error when running yarn, enter the below in the command line for each project (server and client)
+1. run 'yarn install --ignore-engines' 
+2. cd client
+3. run 'yarn install --ignore-engines' 
 ```
 
 ## Running tests

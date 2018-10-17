@@ -1,0 +1,18 @@
+
+#main-footer {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  background-color: black;
+  color: #1D2731;
+  padding: 0px;
+
+  position:fixed;    
+  bottom:0;          
+  left:0;            
+}
+
+.text {
+  color: #1D2731;
+}

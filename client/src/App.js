@@ -27,8 +27,6 @@ import { Provider } from 'react-redux';
 // stylesheets
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-//chat
-import ChatScreen from './components/pages/Chat/ChatScreen'; 
 
 
 if (localStorage.jwtToken) {
@@ -48,43 +46,17 @@ if (localStorage.jwtToken) {
 // App component
 //////////////////////////////////////////////
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      currentUsername: '',
-      currentScreen: 'WhatIsYourUsernameScreen',
-  // state = {
+
+  state = {
     appName: "SpaceBar",
     orgName: "GT Project Team",
     year: new Date().getFullYear()
-  }
-  this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
-}
-onUsernameSubmitted(username) {
-  fetch('http://localhost:3001/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username }),
-  })
-    .then(response => {
-      this.setState({
-        currentUsername: username,
-        currentScreen: 'ChatScreen',
-      })
-    })
-    .catch(error => console.error('error', error))
-  }
-  
+  };
+
   /////////////////////////
   // render
   /////////////////////////
   render() {
-    if (this.state.currentScreen === 'ChatScreen') {
-      return <ChatScreen onSubmit={this.onUsernameSubmitted} 
-      currentUsername={this.state.currentUsername} />
-    }
     return (
       <Provider store={store}>
         <Router>

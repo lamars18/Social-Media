@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Articles from '../../articles/Articles';
+import ChatApp from '../../ChatApp/ChatApp';
 import "./Home.css";
-//for chat
-import ChatScreen from '../Chat/ChatScreen';
-import Blog from '../Blog/Blog'
-import UserProfile from '../Profile/Profile';
-import UsernameForm from '../Chat/UsernameForm';
+import Blog from '../Blog/Blog';
+import Profile from '../Profile/Profile';
+import UsernameForm from '../../ChatApp/UsernameForm';
 
 class Home extends Component {
 
@@ -16,24 +15,24 @@ class Home extends Component {
           {/* Profile */}
           <div id="profile-section" className="col-md-2 container">
             <h6 className="app-display-4">User Profile</h6>
-            <UserProfile />
+          <Profile></Profile>
           </div>
           {/* News Feed */}
           <div id="newsfeed-section" className="col-md-3 home">
             <h6 className="app-display-4">Latest News</h6>
-            <Articles />
+            <Articles></Articles>
           </div>
           {/* Blog */}
           <div id="blog-section" className="col-md-3 container">
             <h6 className="app-display-4">Posts</h6>
-            <Blog />
+            <Blog></Blog>
+
           </div>
           {/* Chat */}
           <div id="chat-section" className="col-md-2 container">
             <h6 className="app-display-4">Trending/Chat</h6>
-            <ChatScreen />
-            <UsernameForm />
-            
+            <ChatApp></ChatApp>
+            {/* <UsernameForm></UsernameForm> */}
           </div>
         </div>
       </React.Fragment>
